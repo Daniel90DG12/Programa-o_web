@@ -1,0 +1,620 @@
+/* ============================================================
+   ESTILO RESUMO - Capítulos 2 e 3
+   ============================================================
+   Este arquivo CSS estiliza os resumos dos capítulos 2 (HTML) 
+   e 3 (CSS) do livro, aplicando os conceitos ensinados no 
+   Capítulo 3: Designing Web Pages with CSS.
+
+   Metodologia: CSS Externo (External Stylesheet) - método 
+   recomendado no livro, pois permite reutilização em múltiplos
+   documentos e manutenção centralizada.
+   ============================================================ */
+
+
+/* ============================================================
+   SEÇÃO 1: RESET E CONFIGURAÇÕES GLOBAIS
+   ============================================================
+   O seletor universal (*) aplica estilos a TODOS os elementos
+   da página. É útil para definir comportamentos padrão.
+
+   box-sizing: border-box - faz com que padding e border sejam
+   incluídos no cálculo da largura/altura total do elemento.
+   Isso facilita o controle de dimensões (conceito do livro).
+   ============================================================ */
+
+* {
+    box-sizing: border-box;         /* Inclui padding/border na largura total */
+    margin: 0;                      /* Remove margens padrão do navegador */
+    padding: 0;                     /* Remove paddings padrão do navegador */
+}
+
+
+/* ============================================================
+   SEÇÃO 2: ESTILOS DO BODY (CORPO DA PÁGINA)
+   ============================================================
+   O body é o elemento raiz visível da página. Aqui definimos:
+   - Fonte principal (font-family) com fallbacks
+   - Tamanho base da fonte (font-size)
+   - Cor do texto (color)
+   - Cor de fundo (background-color)
+   - Altura da linha (line-height) para legibilidade
+   - Largura máxima e centralização do conteúdo
+   ============================================================ */
+
+body {
+    /* FONT-FAMILY: define a fonte do texto
+       Estratégia de fallback: se a primeira não estiver disponível,
+       o navegador tenta a próxima. 'sans-serif' é o fallback genérico.
+       (Conceito do livro, Seção 3.2.2 - Defining Fonts) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* FONT-SIZE: tamanho base da fonte em pixels
+       16px é o padrão da maioria dos navegadores */
+    font-size: 16px;
+
+    /* LINE-HEIGHT: altura da linha, aqui 1.6x o tamanho da fonte
+       Isso melhora a legibilidade do texto corrido */
+    line-height: 1.6;
+
+    /* COLOR: cor do texto (foreground color)
+       Usando valor hexadecimal para cinza escuro */
+    color: #333333;
+
+    /* BACKGROUND-COLOR: cor de fundo da página
+       Usando nome de cor predefinido (mais de 140 disponíveis) */
+    background-color: #f4f7f9;
+
+    /* Largura máxima do conteúdo para não esticar demais em telas largas */
+    max-width: 900px;
+
+    /* Centraliza o conteúdo horizontalmente na página */
+    margin: 0 auto;
+
+    /* Padding interno para não colar nas bordas da janela */
+    padding: 20px;
+}
+
+
+/* ============================================================
+   SEÇÃO 3: TÍTULOS (H1, H2, H3)
+   ============================================================
+   Seletores de TIPO: selecionam TODOS os elementos de um tipo.
+   Exemplo do livro: h1, h2 { color: green; }
+
+   Hierarquia visual: H1 > H2 > H3 (tamanho decrescente)
+   ============================================================ */
+
+/* H1 - Título principal da página */
+h1 {
+    /* FONT-FAMILY: fonte diferente para títulos, com serifa */
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+
+    /* FONT-SIZE: 2.5x o tamanho base (40px se base for 16px) */
+    font-size: 2.5em;
+
+    /* TEXT-ALIGN: centraliza o texto horizontalmente */
+    text-align: center;
+
+    /* COLOR: azul escuro usando valor hexadecimal */
+    color: #1a5276;
+
+    /* MARGIN-BOTTOM: espaço abaixo do título */
+    margin-bottom: 30px;
+
+    /* PADDING-BOTTOM: espaço interno abaixo do texto */
+    padding-bottom: 15px;
+
+    /* BORDER-BOTTOM: linha decorativa abaixo do título
+       Shorthand property: largura estilo cor (conceito do livro, Seção 3.3.2) */
+    border-bottom: 3px solid #3498db;
+
+    /* TEXT-SHADOW: sombra no texto para efeito de profundidade */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* H2 - Títulos de seção principais */
+h2 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1.8em;
+    color: #2874a6;
+
+    /* MARGIN-TOP: espaço acima, separando da seção anterior */
+    margin-top: 35px;
+    margin-bottom: 15px;
+
+    /* PADDING-LEFT: recuo à esquerda para destacar */
+    padding-left: 15px;
+
+    /* BORDER-LEFT: linha vertical decorativa à esquerda */
+    border-left: 5px solid #3498db;
+}
+
+/* H3 - Títulos de subseções */
+h3 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1.3em;
+    color: #2e86c1;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #85c1e9;
+}
+
+
+/* ============================================================
+   SEÇÃO 4: PARÁGRAFOS (P)
+   ============================================================
+   Seletor de tipo simples - afeta todos os parágrafos.
+   ============================================================ */
+
+p {
+    /* TEXT-ALIGN: justify alinha o texto dos dois lados */
+    text-align: justify;
+
+    /* MARGIN-BOTTOM: espaço entre parágrafos */
+    margin-bottom: 15px;
+}
+
+
+/* ============================================================
+   SEÇÃO 5: LISTAS (UL, OL, LI)
+   ============================================================
+   O livro apresenta três tipos de listas (Seção 3.3.1):
+   - Unordered lists (ul): com marcadores
+   - Ordered lists (ol): numeradas
+   - Definition lists (dl): termo/definição
+
+   Aqui estilizamos UL e OL, e seus itens LI.
+   ============================================================ */
+
+/* Listas não ordenadas (com bullets) */
+ul {
+    /* MARGIN: espaço externo ao redor da lista */
+    margin: 15px 0 15px 30px;
+}
+
+/* Listas ordenadas (numeradas) */
+ol {
+    margin: 15px 0 15px 30px;
+}
+
+/* Itens de lista (LI) - comuns a UL e OL */
+li {
+    /* MARGIN-BOTTOM: espaço entre cada item */
+    margin-bottom: 8px;
+
+    /* LINE-HEIGHT: espaçamento entre linhas dentro do item */
+    line-height: 1.5;
+}
+
+/* LIST-STYLE-TYPE: define o tipo de marcador
+   (Conceito do livro, Seção 3.3.1 - Designing Lists) */
+ul {
+    /* CIRCLE: círculo vazio com borda preta */
+    list-style-type: circle;
+}
+
+ol {
+    /* DECIMAL: números (1, 2, 3...) - padrão */
+    list-style-type: decimal;
+}
+
+/* Listas aninhadas (listas dentro de listas) */
+ul ul, ol ul, ul ol, ol ol {
+    /* MARGIN-TOP: espaço acima da sublista */
+    margin-top: 8px;
+
+    /* MARGIN-LEFT: recuo adicional para hierarquia */
+    margin-left: 20px;
+}
+
+
+/* ============================================================
+   SEÇÃO 6: TABELAS (TABLE, TH, TD, TR)
+   ============================================================
+   O livre ensina a estilizar tabelas na Seção 3.3.2.
+   Usamos propriedades como border, border-collapse, padding,
+   background-color, e pseudo-classes :nth-child.
+   ============================================================ */
+
+table {
+    /* BORDER: shorthand property - largura estilo cor
+       (Conceito do livro, Seção 3.3.2 - Shorthand Properties) */
+    border: 1px solid #bdc3c7;
+
+    /* BORDER-COLLAPSE: "colapsa" as bordas adjacentes
+       fazendo as células compartilharem uma única borda */
+    border-collapse: collapse;
+
+    /* Largura total da tabela */
+    width: 100%;
+
+    /* MARGINS: centraliza e espaça a tabela */
+    margin: 20px 0;
+
+    /* BACKGROUND-COLOR: fundo branco para contraste */
+    background-color: #ffffff;
+
+    /* BOX-SHADOW: sombra sutil para destaque */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Células de cabeçalho (TH) */
+th {
+    /* BACKGROUND-COLOR: fundo escuro para cabeçalho */
+    background-color: #2c3e50;
+
+    /* COLOR: texto branco para contraste */
+    color: #ffffff;
+
+    /* FONT-WEIGHT: negrito */
+    font-weight: bold;
+
+    /* TEXT-ALIGN: alinhamento à esquerda */
+    text-align: left;
+
+    /* PADDING: espaço interno nas células */
+    padding: 12px 15px;
+
+    /* TEXT-TRANSFORM: uppercase - texto em maiúsculas */
+    text-transform: uppercase;
+
+    /* FONT-SIZE: ligeiramente menor */
+    font-size: 0.9em;
+
+    /* LETTER-SPACING: espaçamento entre letras */
+    letter-spacing: 0.5px;
+}
+
+/* Células de dados (TD) */
+td {
+    /* PADDING: espaço interno */
+    padding: 10px 15px;
+
+    /* BORDER-BOTTOM: linha separadora entre linhas */
+    border-bottom: 1px solid #ecf0f1;
+
+    /* TEXT-ALIGN: alinhamento padrão à esquerda */
+    text-align: left;
+}
+
+/* ============================================================
+   PSEUDO-CLASSES PARA TABELAS
+   ============================================================
+   Pseudo-classes selecionam elementos em condições especiais.
+   (Conceito do livro, Seção 3.1.4 e 3.3.2)
+
+   :nth-child(odd)  - linhas ímpares
+   :nth-child(even) - linhas pares
+   :first-child     - primeiro filho
+   ============================================================ */
+
+/* Linhas ímpares: fundo cinza claro (zebrado) */
+tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+/* Linhas pares: fundo branco */
+tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* Efeito HOVER: quando o mouse passa sobre a linha */
+tr:hover {
+    background-color: #e8f4f8;
+    transition: background-color 0.3s ease;
+}
+
+/* Primeira coluna em negrito (conceito do livro) */
+td:first-child {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+
+/* ============================================================
+   SEÇÃO 7: FORMATAÇÃO DE TEXTO INLINE
+   ============================================================
+   Elementos como <b>, <strong>, <i>, <em>, <code>
+   ============================================================ */
+
+/* Texto em negrito (B e STRONG) */
+b, strong {
+    /* COLOR: azul para destacar em vez de preto */
+    color: #1a5276;
+
+    /* FONT-WEIGHT: negrito (bold = 700) */
+    font-weight: bold;
+}
+
+/* Texto em itálico (I e EM) */
+i, em {
+    /* FONT-STYLE: itálico */
+    font-style: italic;
+
+    /* COLOR: tom de azul diferente */
+    color: #2874a6;
+}
+
+/* Elementos CODE (código inline) */
+code {
+    /* FONT-FAMILY: fonte monoespaçada para código
+       (Conceito do livro: monospace é ideal para código) */
+    font-family: 'Courier New', Courier, monospace;
+
+    /* BACKGROUND-COLOR: fundo cinza claro */
+    background-color: #f0f0f0;
+
+    /* PADDING: espaço interno pequeno */
+    padding: 2px 6px;
+
+    /* BORDER-RADIUS: cantos arredondados */
+    border-radius: 3px;
+
+    /* FONT-SIZE: ligeiramente menor */
+    font-size: 0.9em;
+
+    /* COLOR: vermelho escuro para código */
+    color: #c0392b;
+}
+
+
+/* ============================================================
+   SEÇÃO 8: CLASSE "CODIGO" (SPAN.CODIGO)
+   ============================================================
+   Seletor de CLASSE: seleciona elementos com class="codigo"
+   Usado no resumo_cap3.html para destacar código CSS inline.
+
+   Sintaxe: .nome-da-classe { ... }
+   (Conceito do livro, Seção 3.1.3 - Class Selector)
+   ============================================================ */
+
+.codigo {
+    /* FONT-FAMILY: monoespaçada para código */
+    font-family: 'Courier New', Courier, monospace;
+
+    /* BACKGROUND-COLOR: fundo cinza muito claro */
+    background-color: #f4f4f4;
+
+    /* PADDING: espaço interno */
+    padding: 2px 5px;
+
+    /* BORDER: borda sutil */
+    border: 1px solid #ddd;
+
+    /* BORDER-RADIUS: cantos arredondados */
+    border-radius: 3px;
+
+    /* FONT-SIZE: ligeiramente menor que o texto normal */
+    font-size: 0.9em;
+
+    /* COLOR: verde escuro para código */
+    color: #27ae60;
+
+    /* WHITE-SPACE: preserva espaços em branco */
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   SEÇÃO 9: IMAGENS (IMG)
+   ============================================================
+   O resumo_cap2.html contém várias imagens.
+   ============================================================ */
+
+img {
+    /* MAX-WIDTH: não ultrapassa a largura do container */
+    max-width: 100%;
+
+    /* HEIGHT: altura automática mantém proporção */
+    height: auto;
+
+    /* DISPLAY: block para margens funcionarem corretamente */
+    display: block;
+
+    /* MARGIN: centraliza a imagem */
+    margin: 15px auto;
+
+    /* BORDER: borda sutil */
+    border: 1px solid #bdc3c7;
+
+    /* BORDER-RADIUS: cantos levemente arredondados */
+    border-radius: 4px;
+
+    /* PADDING: espaço interno (moldura) */
+    padding: 5px;
+
+    /* BACKGROUND-COLOR: fundo branco para moldura */
+    background-color: #ffffff;
+
+    /* BOX-SHADOW: sombra para destaque */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ============================================================
+   SEÇÃO 10: FIGURE E FIGCAPTION
+   ============================================================
+   Elementos semânticos do HTML5 para imagens com legenda.
+   ============================================================ */
+
+figure {
+    /* MARGIN: espaço ao redor */
+    margin: 20px 0;
+
+    /* TEXT-ALIGN: centraliza o conteúdo */
+    text-align: center;
+}
+
+figcaption {
+    /* FONT-STYLE: itálico para legenda */
+    font-style: italic;
+
+    /* COLOR: cinza para diferenciar do texto principal */
+    color: #7f8c8d;
+
+    /* FONT-SIZE: menor que o texto normal */
+    font-size: 0.9em;
+
+    /* MARGIN-TOP: espaço acima da legenda */
+    margin-top: 8px;
+}
+
+
+/* ============================================================
+   SEÇÃO 11: ELEMENTOS ESTRUTURAIS DO HTML5
+   ============================================================
+   Header, Footer, Article, Section, Nav, Aside
+   ============================================================ */
+
+article {
+    /* BACKGROUND-COLOR: fundo branco */
+    background-color: #ffffff;
+
+    /* PADDING: espaço interno */
+    padding: 25px;
+
+    /* MARGIN-BOTTOM: espaço abaixo */
+    margin-bottom: 20px;
+
+    /* BORDER-RADIUS: cantos arredondados */
+    border-radius: 8px;
+
+    /* BOX-SHADOW: sombra para efeito de "card" */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ============================================================
+   SEÇÃO 12: LINKS (A)
+   ============================================================
+   Pseudo-classes para links (conceito do livro, Seção 3.2.2):
+   :link    - links não visitados
+   :visited - links já visitados
+   :hover   - mouse sobre o link
+   :active  - momento do clique
+   :focus   - link com foco do teclado
+   ============================================================ */
+
+/* Links não visitados */
+a:link {
+    /* COLOR: azul padrão */
+    color: #2980b9;
+
+    /* TEXT-DECORATION: remove sublinhado padrão */
+    text-decoration: none;
+
+    /* BORDER-BOTTOM: linha sutil em vez de sublinhado */
+    border-bottom: 1px solid transparent;
+
+    /* TRANSITION: animação suave nas mudanças */
+    transition: all 0.3s ease;
+}
+
+/* Links visitados */
+a:visited {
+    color: #8e44ad;
+}
+
+/* Mouse sobre o link (HOVER) */
+a:hover {
+    /* COLOR: muda para tom mais escuro */
+    color: #1a5276;
+
+    /* BORDER-BOTTOM: aparece linha decorativa */
+    border-bottom: 1px solid #3498db;
+
+    /* BACKGROUND-COLOR: fundo levemente destacado */
+    background-color: #ebf5fb;
+}
+
+/* Momento do clique (ACTIVE) */
+a:active {
+    color: #e74c3c;
+}
+
+/* Link com foco do teclado (acessibilidade) */
+a:focus {
+    /* OUTLINE: contorno visível para navegação por teclado */
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   SEÇÃO 13: QUEBRA DE LINHA (BR)
+   ============================================================ */
+
+br {
+    /* Não é possível estilizar BR diretamente,
+       mas podemos controlar o espaçamento via line-height
+       nos elementos pai */
+}
+
+
+/* ============================================================
+   SEÇÃO 14: RESPONSIVIDADE BÁSICA (MEDIA QUERIES)
+   ============================================================
+   Media queries permitem aplicar CSS condicionalmente baseado
+   no tamanho da tela. Conceito mencionado no livre, Seção 3.5.3.
+   ============================================================ */
+
+/* Para telas menores que 600px (smartphones) */
+@media screen and (max-width: 600px) {
+    body {
+        /* Reduz padding para aproveitar espaço */
+        padding: 10px;
+
+        /* Fonte ligeiramente menor */
+        font-size: 14px;
+    }
+
+    h1 {
+        /* Título menor em telas pequenas */
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    /* Tabelas com scroll horizontal em telas pequenas */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Reduz recuo das listas */
+    ul, ol {
+        margin-left: 15px;
+    }
+}
+
+
+/* ============================================================
+   SEÇÃO 15: ANIMAÇÕES E TRANSIÇÕES (BÔNUS)
+   ============================================================
+   Transições suaves para interatividade.
+   (Conceito avançado mencionado no livro, Seção 3.5.3)
+   ============================================================ */
+
+/* Aplica transição suave a todos os elementos interativos */
+h1, h2, h3, p, li, td, th {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+/* ============================================================
+   FIM DO ARQUIVO CSS
+   ============================================================
+   Este arquivo demonstra os principais conceitos do Capítulo 3:
+   - Seletores de tipo, classe, universal
+   - Propriedades de texto, cores, fontes
+   - Modelo de caixa (box model): margin, padding, border
+   - Layout básico com max-width e margin auto
+   - Pseudo-classes (:hover, :nth-child, etc.)
+   - Shorthand properties (border, background)
+   - CSS externo para reutilização
+   - Comentários explicativos para aprendizado
+   ============================================================ */
