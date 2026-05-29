@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Resumo do Capitulo 3</title>
+		<link href="../css/estilo_resumo.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<h1><b>Resumo do Capitulo 3</b></h1>
+		<h2><b>Introdução ao CSS</b></h2>
+		<p>
+		O CSS (Cascading Style Sheets) é uma linguagem de estilo que controla a aparência visual dos elementos HTML em uma página web. Com o CSS, você pode definir fontes, cores, dimensões, bordas, listas, formulários, tabelas e o layout geral da página. O objetivo principal é transformar o HTML visualmente "sem graça" em páginas mais atraentes e profissionais.
+		</p>
+		<h2><b>3.1 Introdução aos Conceitos Fundamentais</b></h2>
+		<h3><b>3.1.1 O Princípio do CSS</b></h3>
+		<p>
+		Uma <b>regra CSS</b> consiste em duas partes principais:
+			<ul>
+				<li><b>Seletor:</b>Define quais elementos HTML serão afetados</li>
+				<li><b>Declaração</b>(entre chaves <span class="codigo">{}</span>): Define como esses elementos serão exibidos </li>
+			</ul>
+		A declaração, por sua vez, é composta por:
+			<ul>
+				<li><b>Propriedade:</b>O aspecto visual a ser modificado (ex: <span class="codigo">font-family</span>, <span class="codigo">color</span>)</li>
+				<li><b>Valor:</b>A especificação exata da propriedade (ex: <span class="codigo">Arial</span>, <span class="codigo">darkblue</span>)</li>
+			</ul>
+		</p>
+		<table>
+			<tr>
+				<th>Exemplo de codigo CSS</th>
+			</tr>
+			<tr>
+				<td>
+				<span class="codigo">h1 {
+					font-family: Arial;
+					color: darkblue;
+				}</span>
+				</td>
+			</tr>
+		</table>
+		<h3><b>3.1.2 Inclusão do CSS no HTML</b></h3>
+		<p>
+			Existem <b>três formas principais</b> de incluir CSS:
+			<ol>
+				<li><b>CSS Externo (External Stylesheets)</b> — método mais recomendado:</li>
+					<ul>
+						<li>O CSS é salvo em um arquivo separado (<span class="codigo">.css</span>)</li>
+						<li>Incluído via elemento <span class="codigo">&lt;link&gt;</span> no <span class="codigo">&lt;head&gt;</span> do HTML</li>
+						<li><b>Vantagem:</b>permite reutilização em múltiplos documentos HTML e manutenção centralizada</li>
+					</ul>
+				<li><b>CSS Interno (Internal Stylesheets):</b></li>
+					<ul>
+						<li>CSS definido dentro do elemento <span class="codigo">&lt;style&gt;</span> no <span class="codigo">&lt;head&gt;</span> do HTML</li>
+						<li><b>Desvantagem:</b> não é reutilizável entre páginas; dificulta a sincronização de alterações</li>
+					</ul>
+				<li><b></b></li>
+					<ul>
+						<li>CSS definido diretamente no atributo <span class="codigo">style</span> de um elemento HTML</li>
+						<li><b>Desvantagem:</b>perde totalmente a reutilização; deve ser usado apenas em casos excepcionais</li>
+					</ul>
+			</ol>
+			<b>Nota adicional:</b> Também é possível importar arquivos CSS dentro de outros arquivos CSS usando <span class="codigo">@import url(...).</span>
+		</p>
+		<h3><b>3.1.3 Seletores CSS</b></h3>
+		<p>
+		O capítulo apresenta uma tabela completa de tipos de seletores:
+		</p>
+		<table>
+			<tr>
+				<th><b>Tipo de Seletor<b></th>
+				<th><b>Descrição<b></th>
+				<th><b>Exemplo<b></th>
+			</tr>
+			<tr>
+				<td><b>Seletor de Tipo</b></td>
+				<td>Seleciona todos os elementos de um tipo</td>
+				<td><span class="codigo">input { }</span>, <span class="codigo">h1, h2 { }</span></td>
+			</tr>
+			<tr>
+				<td><b>Seletor de Classe</b></td>
+				<td>Seleciona elementos com uma classe específica</td>
+				<td><span class="codigo">.valid { }</span>, <span class="codigo">a.valid { }</span></td>
+			</tr>
+			<tr>
+				<td><b>Seletor de ID</b></td>
+				<td>Seleciona um elemento com ID específico (deve ser único)</td>
+				<td><span class="codigo">#start { }</span>, <span class="codigo">p#start { }</span></td>
+			</tr>
+			<tr>
+				<td><b>Seletor Universal</b></td>
+				<td>Seleciona todos os elementos</td>
+				<td><span class="codigo">* { }</span></td>
+			</tr>
+			<tr>
+				<td><b>Seletor de Atributo</b></td>
+				<td>Seleciona elementos com base em atributos</td>
+				<td><span class="codigo">[type="text"] { }</span></td>
+			</tr>
+			<tr>
+				<td><b>Seletor de Filho Direto</b></td>
+				<td>Seleciona filhos diretos de um elemento</td>
+				<td><span class="codigo">body > ul { }</span></td>
+			</tr>
+			<tr>
+				<td><b>Seletor de Descendente</b></td>
+				<td>Seleciona todos os descendentes de um elemento</td>
+				<td><span class="codigo">body ul { }</span></td>
+			</tr>
+		</table>
+		<p>
+		<b>Combinação de seletores:</b> É possível criar seletores complexos combinando múltiplos tipos, como <span class="codigo">form#order-details > input.important[type="text"]</span>.
+		</p>
+		<h3><b>3.1.4 Cascata e Especificidade</b></h3>
+		<p>
+		O termo "Cascading" (em cascata) refere-se à forma como as regras CSS são aplicadas:
+			<ul>
+				<li><b>Regra 1:</b> Quando dois seletores idênticos se aplicam ao mesmo elemento, o <b>último definido</b> prevalece</li>
+				<li><b>Regra 2:</b> Quando os seletores são diferentes, o seletor com <b>maior especificidade</b> prevalece</li>
+			</ul>
+		<b>Cálculo da Especificidade</b> (sistema de contadores A, B, C):
+			<ul>
+				<li><b>A:</b> +1 para cada seletor de ID</li>
+				<li><b>B:</b> +1 para cada seletor de classe, atributo ou pseudo-classe</li>
+				<li><b>C:</b> +1 para cada seletor de tipo ou pseudo-elemento</li>
+			</ul>
+		Exemplos de especificidade (do menos para o mais específico):
+			<ul>
+				<li><span class="codigo">*{}</span> --> 000</li>
+				<li><span class="codigo">h1 {}</span> --> 001</li>
+				<li><span class="codigo">ol li {}</span> --> 002</li>
+				<li><span class="codigo">div:first-child {}</span> --> 011</li>
+				<li><span class="codigo">a.test[href] {}</span> --> 021</li>
+				<li><span class="codigo">#anchor {}</span> --> 100</li>
+				<li><span class="codigo">#chapter p {}</span> --> 101</li>
+			</ul>
+		<b>Regras inline</b>(atributo <span class="codigo">style</span>) têm a maior especificidade possível.
+		<br>
+		<b>Pseudo-classes:</b> Selecionam elementos em condições especiais:
+			<ul>
+				<li><span class="codigo">:link</span>,<span class="codigo">:visited</span> ,<span class="codigo">:hover</span> ,<span class="codigo">:active</span> ,<span class="codigo">:focus</span>(para links)</li>
+				<li><span class="codigo">:first-child</span>, <span class="codigo">:nth-child()</span></li>
+			</ul>
+		<b>Pseudo-elementos:</b> Selecionam partes específicas de elementos ou criam novos elementos:
+			<ul>
+				<li><span class="codigo">::before</span>,<span class="codigo">::after</span> ,<span class="codigo">::first-letter</span> ,<span class="codigo">::first-line</span> ,<span class="codigo">::selection</span></li>
+			</ul>
+		</p>
+		<h3><b>3.1.5 Herança</b></h3>
+		<p>
+		Algumas propriedades CSS são <b>herdadas</b> pelos elementos filhos a partir dos elementos pai, como <span class="codigo">color</span> e <span class="codigo">font-family</span>. Outras propriedades, como as de borda (<span class="codigo">border</span>), <b>não são herdadas</b> — caso contrário, uma borda definida em um elemento se aplicaria a todos os seus descendentes.
+		</p>
+		<h2><b>3.2 Aplicação de Cores e Formatação de Texto</b></h2>
+		<h3><b>3.2.1 Definição de Cores</b></h3>
+		<p>
+		A propriedade <span class="codigo">color </span>define a cor do texto. A propriedade <span class="codigo">background-color</span>background-color define a cor de fundo. Ambas aceitam os mesmos formatos de valor:
+			<ul>
+				<li><b>Nomes de cores:</b><span class="codigo">darkblue</span>, <span class="codigo">yellow</span>, <span class="codigo">hotpink</span> (mais de 140 nomes predefinidos)</li>
+				<li><b>Valores hexadecimais: </b><span class="codigo">#FFFF00</span> ou forma curta <span class="codigo">#FF0</span></li>
+				<li><b>Valores RGB:</b><span class="codigo">rgb(255, 255, 0)</span></li>
+				<li><b>Valores RGBA</b> (com transparência/alpha): <span class="codigo">rgba(255, 255, 0, 0.5</span>)</li>
+				<li><b>Valores HSL</b>(matiz, saturação, luminosidade):<span class="codigo">hsl(60, 100%, 50%)</span> </li>
+				<li><b>Valores HSLA</b> (HSL com alpha): <span class="codigo">hsla(60, 100%, 50%, 0.5)</span></li>
+			</ul>
+		</p>
+		<h3><b>3.2.2 Design de Textos</b></h3>
+		<p>
+		O capítulo apresenta diversas propriedades para formatação de texto:
+		<br>
+		<b>Fontes (<span class="codigo">font-family</span>):</b>
+			<ul>
+				<li>Especifica a fonte do texto</li>
+				<li>É recomendável definir <b>fontes fallback</b> separadas por vírgula</li>
+				<li>Se o nome da fonte contiver espaços, deve estar entre aspas</li>
+				<li><b>Fontes genéricas recomendadas</b> como último fallback:</li>
+					<ul>
+						<li><span class="codigo">serif</span> (fontes com serifas, boas para impressão)</li>
+						<li><span class="codigo">sans-serif</span> (fontes sem serifas, melhores para telas)</li>
+						<li><span class="codigo">monospace</span> (fontes de largura fixa, ideais para código)</li>
+						<li><span class="codigo">cursive</span> e <span class="codigo">fantasy</span>  (uso discreto, não para textos longos)</li>
+					</ul>
+			</ul>
+		<b>Tamanho da Fonte (<span class="codigo">font-size</span>):</b>
+			<ul>
+				<li><b>Pixels (<span class="codigo">px</span>):</b> tamanho absoluto em pixels de tela</li>
+				<li><b>Porcentagem (<span class="codigo">%</span>)</b> relativo ao tamanho padrão do navegador (geralmente 16px)</li>
+				<li><b><span class="codigo">em:</span></b> relativo à largura da letra "m" da fonte atual</li>
+			</ul>
+		<b>Estilo da fonte:</b>
+			<ul>
+				<li><span class="codigo">font-style</span>: <span class="codigo">italic</span>, <span class="codigo">oblique</span>, <span class="codigo">normal</span></li>
+				<li><span class="codigo">font-weight</span>: <span class="codigo">normal</span> (400), <span class="codigo">bold</span> (700), <span class="codigo">lighter</span>, <span class="codigo">bolder</span>, ou valores numéricos de 100 a 900</li>
+			</ul>
+		<b>Outras opções de formatação de texto:</b>
+			<ul>
+				<li><span class="codigo">text-transform</span>: <span class="codigo">uppercase</span>, <span class="codigo">lowercase</span>, <span class="codigo">capitalize</span></li>
+				<li><span class="codigo">text-decoration</span>: <span class="codigo">underline</span>, <span class="codigo">line-through</span>, <span class="codigo">overline</span>, <span class="codigo">blink</span> (evitar)</li>
+				<li><span class="codigo">line-height</span>: espaçamento entre linhas</li>
+				<li><span class="codigo">letter-spacing</span>: espaçamento entre letras</li>
+				<li><span class="codigo">word-spacing</span>: espaçamento entre palavras</li>
+				<li><span class="codigo">text-align</span>text-align: alinhamento horizontal (<span class="codigo">left</span>, <span class="codigo">right</span>, <span class="codigo">center</span>, <span class="codigo">justify</span>)</li>
+				<li><span class="codigo">vertical-align</span>: alinhamento vertical (<span class="codigo">top</span>, <span class="codigo">bottom</span>, <span class="codigo">middle</span>)</li>
+				<li><span class="codigo">text-indent</span>: recuo da primeira linha</li>
+				<li><span class="codigo">text-shadow</span>: sombra no texto</li>
+			</ul>
+		<b>Formatação de Links</b><br>
+		Usando pseudo-classe para diferentes estados de links:<br>
+		<table>
+			<tr>
+				<th>Exemplo de codigo CSS</th>
+			</tr>
+			<tr>
+				<td>
+					<span class="codigo">
+						a:link { color: blue; }      /* Não visitados */<br>
+						a:visited { color: green; }  /* Já visitados */<br>
+						a:hover { color: black; background-color: orange; } /* Mouse sobre */<br>
+						a:active { color: red; }     /* Clicando */<br>
+						a:focus { color: orange; }   /* Com foco */<br>
+					</span>
+				</td>
+			</tr>
+		</table>
+		O capítulo inclui um <b>exemplo completo</b> de página de blog formatada com CSS, demonstrando a aplicação prática de todas essas propriedades.<br>
+		</br><b>Dica prática:</b> As ferramentas de desenvolvedor dos navegadores (Chrome DevTools) permitem inspecionar quais regras CSS se aplicam a cada elemento, visualizando tanto a aba "Styles" (regras aplicáveis) quanto "Computed" (propriedades finais calculadas).
+		</p>
+		<h2><b>3.3 Listas e Tabelas</b></h2>
+		<h3><b>3.3.1 Design de Listas</b></h3>
+		<p>
+		<b>Listas não ordenadas</b>(<span class="codigo">&lt;&lt; ul &gt;</span>) — propriedade <span class="codigo">list-style-type</span>:
+			<ul>
+				<li><span class="codigo">none</span>: sem marcador</li>
+				<li><span class="codigo">disc</span>: círculo preto (padrão)</li>
+				<li><span class="codigo">circle</span>: círculo vazio</li>
+				<li><span class="codigo">square</span>: quadrado preto</li>
+			</ul>
+		<b>Listas ordenadas</b> (<span class="codigo">&lt;&lt; ol &gt;</span>) — propriedade <span class="codigo">list-style-type</span>:
+			<ul>
+				<li><span class="codigo">decimal</span>: 1, 2, 3...</li>
+				<li><span class="codigo">decimal-leading-zero</span>: 1, 2, 3...</li>
+				<li><span class="codigo">lower-alpha</span>: a, b, c...</li>
+				<li><span class="codigo">upper-alpha</span>: A, B, C...</li>
+				<li><span class="codigo">lower-roman</span>: i, ii, iii...</li>
+				<li><span class="codigo">upper-roman</span>: I, II, III...</li>
+			</ul>
+		<b>Imagens como marcadores:</b>
+			<ul>
+				<li><span class="codigo">list-style-image: url("images/star.png")</span></li>
+			</ul>
+		<b>Posição dos marcadores</b>(<span class="codigo">list-style-position</span>)
+			<ul>
+				<li><span class="codigo">outside</span>: marcadores à esquerda do bloco de texto (padrão)</li>
+				<li><span class="codigo">inside</span>: marcadores indentados dentro do bloco de texto</li>
+			</ul>
+		</p>
+		<h3><b>3.3.2 Design de Tabelas</b></h3>
+		<p>
+		Tabelas por padrão são visualmente "simples". Com CSS, podemos criar tabelas muito mais atraentes:</br>
+		<br><b>Propriedades principais para tabelas</b>:
+			<ul>
+				<li><span class="codigo">border</span>: propriedade shorthand para largura, estilo e cor da borda</li>
+				<li><span class="codigo">border-collapse: collapse</span>: faz com que as bordas das células adjacentes se fundam em uma única borda</li>
+				<li><span class="codigo">padding</span>: espaço entre o conteúdo da célula e sua borda</li>
+			</ul>
+		<b>Pseudo-classes úteis para tabelas</b>:
+			<ul>
+				<li><span class="codigo">:first-child</span>: seleciona o primeiro filho (ex: primeira coluna)</li>
+				<li><span class="codigo">:nth-child(n)</span>: seleciona filhos em posições específicas</li>
+					<ul>
+						<li><span class="codigo">:nth-child(odd)</span> — linhas ímpares</li>
+						<li><span class="codigo">:nth-child(even)</span> — linhas pares</li>
+					</ul>
+			</ul>
+		<b>Exemplo prático:</b> Uma tabela de livros recomendados sobre CSS, com cabeçalho escuro, linhas zebradas (alternadas), primeira coluna em negrito, segunda em itálico, e terceira alinhada à direita.
+		</p>
+		<h2><b>3.4 Sistemas de Layout</b></h2>
+		<h3><b>3.4.1 Princípios Básicos de Posicionamento</b></h3>
+		<p>
+		<b>Elementos de nível de bloco vs. inline:</b>
+			<ul>
+				<li><b>Block-level:</b> sempre começam em uma nova linha (ex: <span class="codigo">&lt; div &gt;</span>,<span class="codigo">&lt; p &gt;</span> ,<span class="codigo">&lt; h1 &gt;</span> )</li>
+				<li><b>Inline-level:</b>fluem no texto (ex: <span class="codigo">&lt; span &gt;</span>,<span class="codigo">&lt; a &gt;</span> ,<span class="codigo">&lt; strong &gt;</span>)</li>
+				<li>A propriedade <span class="codigo">display</span> pode alterar esse comportamento: <span class="codigo">block</span>, <span class="codigo">inline</span></li>
+			</ul>
+		<b>Tipos de posicionamento (<span class="codigo">position</span>):</b>
+			<ul>
+				<li><span class="codigo">static</span>: posicionamento padrão no fluxo normal</li>
+				<li><span class="codigo">relative</span>: posicionado relativamente à sua posição original</li>
+				<li><span class="codigo">absolute</span>: removido do fluxo normal, posicionado relativamente ao elemento pai</li>
+				<li><span class="codigo">fixed</span>: posicionado relativamente à janela do navegador (viewport)</li>
+				<li><span class="codigo">sticky</span>: comporta-se como <span class="codigo">relative</span> até um ponto de rolagem, depois como <span class="codigo">fixed</span></li>
+				<li><span class="codigo">inherit</span>: herda o posicionamento do elemento pai</li>
+			</ul>
+		</p>
+		<h3><b>3.4.2 Layout Float</b></h3>
+		<p>
+		O layout <b>float</b> usa a propriedade <span class="codigo">float</span> para alinhar elementos à esquerda ou direita, interrompendo o fluxo normal do texto.</br>
+		
+		<br><b>Exemplo prático:</b> Formulário estilizado com float, onde rótulos (<span class="codigo">&lt;&lt; label &gt;</span>) flutuam à esquerda e campos de entrada (<span class="codigo">&lt;&lt; input &gt;</span>) à direita. A propriedade overflow: hidden no container (<span class="codigo">&lt;&lt; form &gt;</span>) garante que ele se expanda para conter todos os elementos flutuantes.<br>
+		</br>Propriedades importantes no exemplo:
+			<ul>
+				<li><span class="codigo">width</span> e <span class="codigo">max-width</span>: definem largura preferida e máxima</li>
+				<li><span class="codigo">box-sizing: border-box</span> inclui padding e borda no cálculo da largura total</li>
+			</ul>
+		</p>
+		<h3><b>3.4.3 Layout Flexbox</b></h3>
+		<p>
+		Introduzido no CSS3, o <b>Flexbox</b> é muito mais flexível que o float. O conceito principal é permitir que um container ajuste dinamicamente a largura e altura de seus itens filhos para preencher o espaço disponível.<br>
+		</br><b>Conceitos-chave:</b>
+			<ul>
+				<li><b>Flex Container:</b>elemento com <span class="codigo">display: flex</span></li>
+				<li><b>Flex Items:</b>elementos filhos dentro do container</li>
+			</ul>
+		<b>Propriedades do Flexbox </b>
+		</p>
+		<table>
+			<tr>
+				<th><b>Categoria</b></th>
+				<th><b>Propriedade</b></th>
+				<th><b>	Descrição</b></th>
+			</tr>
+			<tr>
+				<td><b>Definição</b></td>
+				<td><span class="codigo">display</span></td>
+				<td>Define o container como flex (flex)</td>
+			</tr>
+			<tr>
+				<td><b>Sequência</b></td>
+				<td><span class="codigo">flex-direction</span></td>
+				<td>Direção dos itens (row, column, etc.)</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">flex-wrap</span></td>
+				<td>Quebra de linha (wrap, nowrap)</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">flex-flow</span></td>
+				<td>Shorthand para direction + wrap</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">order</span></td>
+				<td>Ordem dos itens individualmente</td>
+			</tr>
+			<tr>
+				<td><b>Alinhamento</b></td>
+				<td><span class="codigo">justify-content</span></td>
+				<td>Distribuição do espaço no eixo principal</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">align-items</span></td>
+				<td>Alinhamento no eixo transversal</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">align-self</span></td>
+				<td>Alinhamento individual de um item</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">align-content</span></td>
+				<td>Alinhamento em containers multi-linha</td>
+			</tr>
+			<tr>
+				<td><b>Expansão</b></td>
+				<td><span class="codigo">flex-basis</span></td>
+				<td>Tamanho base antes de crescer/encolher</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">flex-grow</span></td>
+				<td>Fator de crescimento</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">flex-shrink</span></td>
+				<td>Fator de encolhimento</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">flex</span></td>
+				<td>Shorthand para basis + grow + shrink</td>
+			</tr>
+		</table>
+		<p>
+		<b>Exemplo prático:</b> O mesmo formulário, agora implementado com Flexbox. Cada par de rótulo+campo é envolvido em uma <span class="codigo">&lt; div class="form-row" &gt;</span> com <span class="codigo">display: flex</span>. As propriedades <span class="codigo">flex: 1</span> (rótulo) e <span class="codigo">flex: 2</span> (campo) definem que o campo tem o dobro da largura do rótulo. <span class="codigo">justify-content: flex-end</span> alinha os elementos à direita.
+		</p>
+		<h3><b>3.4.4 Layout Grid</b></h3>
+		<p>
+		O <b>Grid Layout</b> é o sistema mais moderno e poderoso, permitindo layouts <b>bidimensionais</b> (linhas E colunas simultaneamente), ao contrário do Flexbox que é unidimensional.<br>
+		
+		</br><b>Conceitos-chave:</b>
+			<ul>
+				<li><b>Grid Container:</b> elemento com <span class="codigo">display: grid</span></li>
+				<li><b>Grid Items:</b> elementos posicionados dentro da grade</li>
+			</ul>
+		<b>Propriedades principais do Grid</b>
+		</p>
+		<table>
+			<tr>
+				<th><b>Categoria</b></th>
+				<th><b>Propriedade</b></th>
+				<th><b>	Descrição</b></th>
+			</tr>
+			<tr>
+				<td><b>Definição</b></td>
+				<td><span class="codigo">display</span></td>
+				<td>Define o container como grid (<span class="codigo">grid</span>)</td>
+			</tr>
+			<tr>
+				<td><b>Estrutura</b></td>
+				<td><span class="codigo">grid-template-columns</span></td>
+				<td>Número e tamanho das colunas</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-template-rows</span></td>
+				<td>Número e tamanho das linhas</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-template-areas</span></td>
+				<td>Define áreas nomeadas do grid</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-template</span></td>
+				<td>Shorthand para áreas, colunas e linhas</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid</span></td>
+				<td>Shorthand completo</td>
+			</tr>
+			<tr>
+				<td><b>Posicionamento</b></td>
+				<td><span class="codigo">grid-column-start/end</span></td>
+				<td>Início/fim horizontal do item</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-row-start/end</span></td>
+				<td>Início/fim vertical do item</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-column</span></td>
+				<td>Shorthand para coluna</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-row</span></td>
+				<td>Shorthand para linha</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">grid-area</span></td>
+				<td>Shorthand para posição completa</td>
+			</tr>
+			<tr>
+				<td><b>Alinhamento</b></td>
+				<td><span class="codigo">justify-self</span> / <span class="codigo">justify-items</span></td>
+				<td>Alinhamento horizontal</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">align-self</span> / <span class="codigo">align-items</span></td>
+				<td>Alinhamento vertical</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span class="codigo">justify-content</span> / <span class="codigo">align-content</span></td>
+				<td>Alinhamento do grid no container</td>
+			</tr>
+			<tr>
+				<td><b>Espaçamento</b></td>
+				<td><span class="codigo">row-gap</span> / <span class="codigo">column-gap</span> / <span class="codigo">gap</span></td>
+				<td>Espaços entre linhas e colunas</td>
+			</tr>
+		</table>
+		<p>
+		<b>Exemplo prático:</b> O formulário implementado com Grid. O <span class="codigo">&lt; form &gt;</span> é definido como <span class="codigo">display: grid</span> com <span class="codigo">grid-template-columns: 1fr 2fr</span> (duas colunas, a segunda com o dobro da largura da primeira). <span class="codigo">grid-gap: 16px</span> define o espaçamento. Os rótulos usam <span class="codigo">grid-column: 1/2</span> e os campos/botão usam <span class="codigo">grid-column: 2/3</span>. Não são necessários elementos <span class="codigo">&lt; div &gt;</span> extras, tornando o HTML mais limpo.</b>
+		</p>
+		<h2><b>3.5 Resumo e Perspectivas</b></h2>
+		<h3><b>Pontos-Chave</b></h3>
+		<ol>
+			<li><b>Regras CSS</b> definem como o conteúdo de elementos HTML deve ser exibido</li>
+			<li>Cada regra tem um <b>seletor</b> (quais elementos) e uma <b>declaração</b> (como exibir)</li>
+			<li>Declarações consistem em <b>propriedade</b> + <b>valor</b></li>
+			<li><b>Três formas</b> de inclusão: externa (recomendada), interna e inline</li>
+			<li>CSS pode estilizar <b>textos</b>, <b>listas</b>, <b>tabelas</b> e <b>formulários</b></li>
+			<li><b>Três sistemas de layout:</b></li>
+			<ul>
+				<li><b>Float:</b> elementos "flutuam" no fluxo de texto</li>
+				<li><b>Flexbox:</b> layout unidimensional (linha OU coluna), flexível</li>
+				<li><b>Grid:</b> layout bidimensional (linhas E colunas), o mais flexível</li>
+			</ul>
+		</ol>
+	</body>
+</html>
